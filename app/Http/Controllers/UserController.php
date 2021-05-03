@@ -131,7 +131,7 @@ public function listar()
 
         if($datosUsuarios){
             $status = true;
-            return response()->json(compact('datosUsuarios','token',''),201);
+            return response()->json(compact('datosUsuarios','status'),201);
         }
         return ['status' => false];
 }//fin de listar

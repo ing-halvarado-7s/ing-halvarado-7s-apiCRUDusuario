@@ -36,10 +36,10 @@ Route::group(['middleware' => ['jwt.verify']], function() {
     
     Route::post('cerrarsesion', 'App\Http\Controllers\UserController@cerrarSesion');
 
-    Route::post('asignarol/{id}', 'App\Http\Controllers\RoleController@asignarRol');
+    // Route::post('asignarol/{id}', 'App\Http\Controllers\RoleController@asignarRol');
 
-    Route::post('agregarpermisorol', 'App\Http\Controllers\RoleController@agregarPermisoRol');
+    // Route::post('agregarpermisorol', 'App\Http\Controllers\RoleController@agregarPermisoRol');
 
-    Route::post('quitarpermisorol', 'App\Http\Controllers\RoleController@quitarPermisoRol');
+    // Route::post('quitarpermisorol', 'App\Http\Controllers\RoleController@quitarPermisoRol');
 
 });
