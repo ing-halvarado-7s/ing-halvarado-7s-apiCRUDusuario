@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
          $usu->remember_token = Str::random(10);
          
          $usu->save();
-        //  $usu->assignRole('admin');
+         $usu->assignRole('admin');
  
  
          //Llenar la tabla user con valores de Faker
