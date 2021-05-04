@@ -40,7 +40,7 @@
 						"iniciarsesion"
 					]
 				},
-				"description": "El inicio de sesión es usado para autenticar a un usuario mediante un email y un password registrado en la base de datos.\n\nEl email y el password son agregados en la pestaña body en la opción form data.\n\nEl inicio de sesión devuelve un token que debe ser usado en todos los endpoints que solo funcionan cuando el usuario está autenticado.\n\nLos endpoints que necesitan token para funcionar son:\n*Crear usuario.\n*Listar usuario.\n*Actualizar usuario.\n*Borrar usuario.\n*Mostrar detalle de un usuario."
+				"description": "El inicio de sesión es usado para autenticar a un usuario mediante un email y un password registrado en la base de datos.\n\nEl email y el password son agregados en la pestaña body en la opción form data.\n\nEl inicio de sesión devuelve un token que debe ser usado en todos los endpoints que solo funcionan cuando el usuario está autenticado.\n\nLos endpoints que necesitan token para funcionar son:\n*Crear usuario.\n*Listar usuario.\n*Actualizar usuario.\n*Borrar usuario.\n*Mostrar detalle de un usuario.\n*Asignar rol a usuario.\n*Agregar permiso a rol.\n*Quitar permiso a rol."
 			},
 			"response": []
 		},
@@ -134,7 +134,7 @@
 						"crear"
 					]
 				},
-				"description": "El usuario es la persona que va a utilizar las funcionalidades del sistema.\n\nPara crear un usuario es necesario ingresar todos los datos, el numero de teléfono puede estar vacio. Estos datos son almacenados en la base de datos.\n\nSe pueden usar los mismos datos que se encuentran en la pestaña body en la opción form-data, excepto el email y el dni que son datos únicos y se deben cambiar cuando sean usados por primera vez.\n\nEl email y el password del usuario creado son los que se deben usar para iniciar sesión."
+				"description": "Esta función permite crear un registro de un usuario nuevo, es necesario ingresar todos los datos excepto el teléfono que puede estar vacío. Para hacer la prueba se pueden usar los mismos datos que se encuentran en la pestaña body en la opción form-data, excepto el email y el dni que son datos únicos y se deben cambiar cuando sean usados por primera vez. \n\nEl email y el password del usuario creado son los que se usan para iniciar sesión.\n\nAntes de ejecutar la función es necesario agregar el token que devuelve el inicio de sesión, dicho valor se debe agregar en la pestaña \"autorización\", en el tipo \"Bearer to\" en la caja de texto \"Token\".\n\nLos datos son almacenados en la tabla users, si la ejecución de la función resulta exitosa se muestran los datos del registro creado y  un valor status en true, y si no se pudo registrar devuelve status en false.\n\n"
 			},
 			"response": []
 		},
@@ -168,7 +168,7 @@
 						"listar"
 					]
 				},
-				"description": "Muestra todos los usuarios registrados en la base de datos.\n\nEsta es una ruta protegida por lo que para poder ejecutarla se necesita un token.\n\nPara obtener un token se debe ejecutar el Inicio de sesión.\n\nEl valor del key autorization que se encuentra en la pestaña Header sera la palabra Bearer más el token, tal como se muestra a continuación:\n\nBearer (token)"
+				"description": "Esta función permite listar todos los usuarios registrados en la base de datos.\n\nAntes de ejecutar la función es necesario agregar el token que devuelve el inicio de sesión, dicho valor se debe agregar en la pestaña \"autorización\", en el tipo \"Bearer to\" en la caja de texto \"Token\".\n\nSi la ejecución de la función resulta exitosa se muestran todos los registros de usuario que se encuentran en la base de datos y  un valor status en true, y si no se pudo listar devuelve status en false."
 			},
 			"response": []
 		},
@@ -212,7 +212,8 @@
 						"actualizar",
 						"12"
 					]
-				}
+				},
+				"description": "Esta función permite editar los datos del registro de un usuario en particular mediante su id. Además se necesitan los nuevos valores de los datos que se quieran modificar. Para el ejemplo solo se modifica el nombre del usuario.\n\nAntes de ejecutar la función es necesario agregar el token que devuelve el inicio de sesión, dicho valor se debe agregar en la pestaña \"autorización\", en el tipo \"Bearer to\" en la caja de texto \"Token\".\n\nLos datos son almacenados en la tabla users, si la ejecución de la función resulta exitosa se muestran los datos del registro modificado y un valor status en true, y si no se pudo registrar devuelve status en false."
 			},
 			"response": []
 		},
@@ -253,7 +254,8 @@
 						"eliminar",
 						"2"
 					]
-				}
+				},
+				"description": "Esta función permite eliminar los datos del registro de un usuario en particular mediante su id. \n\nAntes de ejecutar la función es necesario agregar el token que devuelve el inicio de sesión, dicho valor se debe agregar en la pestaña \"autorización\", en el tipo \"Bearer to\" en la caja de texto \"Token\".\n\nLos datos son eliminados de la tabla users, si la ejecución de la función resulta exitosa se muestra un valor status en true, y si no se pudo registrar devuelve status en false."
 			},
 			"response": []
 		},
@@ -294,7 +296,7 @@
 						"1"
 					]
 				},
-				"description": "Muestra los datos del usuario cuyo id coincida con el id enviado mediante la url.\n\nEsta es una ruta protegida por lo que para poder ejecutarla se necesita un token.\n\nPara obtener un token se debe ejecutar el Inicio de sesión.\n\nEl valor del key autorization que se encuentra en la pestaña Header sera la palabra Bearer más el token, tal como se muestra a continuación:\n\nBearer (token)"
+				"description": "Esta función permite lista los datos del usuario cuyo id coincida con el id enviado mediante la url.\n\nAntes de ejecutar la función es necesario agregar el token que devuelve el inicio de sesión, dicho valor se debe agregar en la pestaña \"autorización\", en el tipo \"Bearer to\" en la caja de texto \"Token\".\n\nSi la ejecución de la función resulta exitosa se muestran todos los datos del usuario que se encuentran en la base de datos y un valor status en true, y si no se pudo listar devuelve status en false."
 			},
 			"response": []
 		},
@@ -306,7 +308,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9pbmljaWFyc2VzaW9uIiwiaWF0IjoxNjIwMDMzNzg3LCJleHAiOjE2MjAwMzczODcsIm5iZiI6MTYyMDAzMzc4NywianRpIjoiQVJoZHdtaEliMGNKaW8zaiIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.cm4FPJp08c31V1e8vOY1JnWu07LslxzIegkwyeIYNlk",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9pbmljaWFyc2VzaW9uIiwiaWF0IjoxNjIwMDg2NzU1LCJleHAiOjE2MjAwOTAzNTUsIm5iZiI6MTYyMDA4Njc1NSwianRpIjoib2NPMEFrTFBlWjgzeXM3OSIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.DBgu1S5AFuOh_YNv1b0yvikouyUlYp5VeUmzQM_wwFk",
 							"type": "string"
 						}
 					]
@@ -350,7 +352,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9pbmljaWFyc2VzaW9uIiwiaWF0IjoxNjIwMDMzNzg3LCJleHAiOjE2MjAwMzczODcsIm5iZiI6MTYyMDAzMzc4NywianRpIjoiQVJoZHdtaEliMGNKaW8zaiIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.cm4FPJp08c31V1e8vOY1JnWu07LslxzIegkwyeIYNlk",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9pbmljaWFyc2VzaW9uIiwiaWF0IjoxNjIwMDg2NzU1LCJleHAiOjE2MjAwOTAzNTUsIm5iZiI6MTYyMDA4Njc1NSwianRpIjoib2NPMEFrTFBlWjgzeXM3OSIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.DBgu1S5AFuOh_YNv1b0yvikouyUlYp5VeUmzQM_wwFk",
 							"type": "string"
 						}
 					]
@@ -367,7 +369,7 @@
 						},
 						{
 							"key": "nombrePermiso",
-							"value": "mostrarDetalle",
+							"value": "eliminar",
 							"type": "text"
 						}
 					]
@@ -398,7 +400,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9pbmljaWFyc2VzaW9uIiwiaWF0IjoxNjIwMDMzNzg3LCJleHAiOjE2MjAwMzczODcsIm5iZiI6MTYyMDAzMzc4NywianRpIjoiQVJoZHdtaEliMGNKaW8zaiIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.cm4FPJp08c31V1e8vOY1JnWu07LslxzIegkwyeIYNlk",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9pbmljaWFyc2VzaW9uIiwiaWF0IjoxNjIwMDg2NzU1LCJleHAiOjE2MjAwOTAzNTUsIm5iZiI6MTYyMDA4Njc1NSwianRpIjoib2NPMEFrTFBlWjgzeXM3OSIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.DBgu1S5AFuOh_YNv1b0yvikouyUlYp5VeUmzQM_wwFk",
 							"type": "string"
 						}
 					]
@@ -415,7 +417,7 @@
 						},
 						{
 							"key": "nombrePermiso",
-							"value": "mostrarDetalle",
+							"value": "eliminar",
 							"type": "text"
 						}
 					]
@@ -433,6 +435,39 @@
 					"path": [
 						"api",
 						"quitarpermisorol"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cerrar sesión",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9pbmljaWFyc2VzaW9uIiwiaWF0IjoxNjIwMDkwNTQyLCJleHAiOjE2MjAwOTQxNDIsIm5iZiI6MTYyMDA5MDU0MiwianRpIjoiVjdLemdxMlFBdWFPTDNsWSIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.bKETWV57V5g-g_CjlsmowXl_dcY9YAMv-JmKNmcz3ww",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/cerrarsesion",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"cerrarsesion"
 					]
 				}
 			},
