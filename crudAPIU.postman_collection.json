@@ -1,0 +1,442 @@
+{
+	"info": {
+		"_postman_id": "817b39b7-5950-4917-be6f-f7fa6cd8662d",
+		"name": "crudAPIU",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Iniciar Sesión",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "ing.halvarado.7s@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Venezuela2021",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/iniciarsesion",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"iniciarsesion"
+					]
+				},
+				"description": "El inicio de sesión es usado para autenticar a un usuario mediante un email y un password registrado en la base de datos.\n\nEl email y el password son agregados en la pestaña body en la opción form data.\n\nEl inicio de sesión devuelve un token que debe ser usado en todos los endpoints que solo funcionan cuando el usuario está autenticado.\n\nLos endpoints que necesitan token para funcionar son:\n*Crear usuario.\n*Listar usuario.\n*Actualizar usuario.\n*Borrar usuario.\n*Mostrar detalle de un usuario."
+			},
+			"response": []
+		},
+		{
+			"name": "Crear Usuario",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9pbmljaWFyc2VzaW9uIiwiaWF0IjoxNjIwMDgzNjk3LCJleHAiOjE2MjAwODcyOTcsIm5iZiI6MTYyMDA4MzY5NywianRpIjoiUTduTHRZVFR2TmVOUWVJdiIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.7fRcyNVWhqZcutg39c3PLUSBjw3EaiwPI1hgVt3sX6Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Heimys Alva",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "Venezuela2021",
+							"type": "text"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "Venezuela2021",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "ing.halvarado.10s@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "edad",
+							"value": "40",
+							"type": "text"
+						},
+						{
+							"key": "fecha_nacimiento",
+							"value": "1980-08-06",
+							"type": "text"
+						},
+						{
+							"key": "sexo",
+							"value": "F",
+							"type": "text"
+						},
+						{
+							"key": "dni",
+							"value": "1100336",
+							"type": "text"
+						},
+						{
+							"key": "direccion",
+							"value": "Chivacoa",
+							"type": "text"
+						},
+						{
+							"key": "pais",
+							"value": "Venezuela",
+							"type": "text"
+						},
+						{
+							"key": "telefono",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/crear",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"crear"
+					]
+				},
+				"description": "El usuario es la persona que va a utilizar las funcionalidades del sistema.\n\nPara crear un usuario es necesario ingresar todos los datos, el numero de teléfono puede estar vacio. Estos datos son almacenados en la base de datos.\n\nSe pueden usar los mismos datos que se encuentran en la pestaña body en la opción form-data, excepto el email y el dni que son datos únicos y se deben cambiar cuando sean usados por primera vez.\n\nEl email y el password del usuario creado son los que se deben usar para iniciar sesión."
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Usuarios",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9pbmljaWFyc2VzaW9uIiwiaWF0IjoxNjIwMDgzNjk3LCJleHAiOjE2MjAwODcyOTcsIm5iZiI6MTYyMDA4MzY5NywianRpIjoiUTduTHRZVFR2TmVOUWVJdiIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.7fRcyNVWhqZcutg39c3PLUSBjw3EaiwPI1hgVt3sX6Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/listar",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"listar"
+					]
+				},
+				"description": "Muestra todos los usuarios registrados en la base de datos.\n\nEsta es una ruta protegida por lo que para poder ejecutarla se necesita un token.\n\nPara obtener un token se debe ejecutar el Inicio de sesión.\n\nEl valor del key autorization que se encuentra en la pestaña Header sera la palabra Bearer más el token, tal como se muestra a continuación:\n\nBearer (token)"
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Usuario",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9pbmljaWFyc2VzaW9uIiwiaWF0IjoxNjIwMDgzNjk3LCJleHAiOjE2MjAwODcyOTcsIm5iZiI6MTYyMDA4MzY5NywianRpIjoiUTduTHRZVFR2TmVOUWVJdiIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.7fRcyNVWhqZcutg39c3PLUSBjw3EaiwPI1hgVt3sX6Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Carlos Zavala",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/actualizar/12",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"actualizar",
+						"12"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar Usuario",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9pbmljaWFyc2VzaW9uIiwiaWF0IjoxNjIwMDgzNjk3LCJleHAiOjE2MjAwODcyOTcsIm5iZiI6MTYyMDA4MzY5NywianRpIjoiUTduTHRZVFR2TmVOUWVJdiIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.7fRcyNVWhqZcutg39c3PLUSBjw3EaiwPI1hgVt3sX6Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9pbmljaWFyc2VzaW9uIiwiaWF0IjoxNjE5OTE3NDU5LCJleHAiOjE2MTk5MjEwNTksIm5iZiI6MTYxOTkxNzQ1OSwianRpIjoidTVoS3huaHNzWWJydDBFVSIsInN1YiI6NSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.4hBOzBgNzHEe9p3wblQ1PxZ8XABmB_2P7z6c8N7X4RA",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/eliminar/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"eliminar",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Mostrar Detalle de Usuario",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9pbmljaWFyc2VzaW9uIiwiaWF0IjoxNjIwMDgzNjk3LCJleHAiOjE2MjAwODcyOTcsIm5iZiI6MTYyMDA4MzY5NywianRpIjoiUTduTHRZVFR2TmVOUWVJdiIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.7fRcyNVWhqZcutg39c3PLUSBjw3EaiwPI1hgVt3sX6Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9pbmljaWFyc2VzaW9uIiwiaWF0IjoxNjE5OTEzMjI4LCJleHAiOjE2MTk5MTY4MjgsIm5iZiI6MTYxOTkxMzIyOCwianRpIjoiTEZNdzQ2WVR1VENMNWlZNCIsInN1YiI6NSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.62HnCrLRB-XuTR33BkATklNv_G-w9CPOLEwHSO8fM8A",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/mostrardetalle/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"mostrardetalle",
+						"1"
+					]
+				},
+				"description": "Muestra los datos del usuario cuyo id coincida con el id enviado mediante la url.\n\nEsta es una ruta protegida por lo que para poder ejecutarla se necesita un token.\n\nPara obtener un token se debe ejecutar el Inicio de sesión.\n\nEl valor del key autorization que se encuentra en la pestaña Header sera la palabra Bearer más el token, tal como se muestra a continuación:\n\nBearer (token)"
+			},
+			"response": []
+		},
+		{
+			"name": "Asignar Rol a Usuario",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9pbmljaWFyc2VzaW9uIiwiaWF0IjoxNjIwMDMzNzg3LCJleHAiOjE2MjAwMzczODcsIm5iZiI6MTYyMDAzMzc4NywianRpIjoiQVJoZHdtaEliMGNKaW8zaiIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.cm4FPJp08c31V1e8vOY1JnWu07LslxzIegkwyeIYNlk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombreRol",
+							"value": "Admin",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/asignarol/3",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"asignarol",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar Perniso Rol",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9pbmljaWFyc2VzaW9uIiwiaWF0IjoxNjIwMDMzNzg3LCJleHAiOjE2MjAwMzczODcsIm5iZiI6MTYyMDAzMzc4NywianRpIjoiQVJoZHdtaEliMGNKaW8zaiIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.cm4FPJp08c31V1e8vOY1JnWu07LslxzIegkwyeIYNlk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombreRol",
+							"value": "usuario",
+							"type": "text"
+						},
+						{
+							"key": "nombrePermiso",
+							"value": "mostrarDetalle",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/agregarpermisorol",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"agregarpermisorol"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Quitar Permiso Rol",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9pbmljaWFyc2VzaW9uIiwiaWF0IjoxNjIwMDMzNzg3LCJleHAiOjE2MjAwMzczODcsIm5iZiI6MTYyMDAzMzc4NywianRpIjoiQVJoZHdtaEliMGNKaW8zaiIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.cm4FPJp08c31V1e8vOY1JnWu07LslxzIegkwyeIYNlk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nombreRol",
+							"value": "usuario",
+							"type": "text"
+						},
+						{
+							"key": "nombrePermiso",
+							"value": "mostrarDetalle",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/quitarpermisorol",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"quitarpermisorol"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
